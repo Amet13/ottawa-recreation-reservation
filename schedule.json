@@ -45,24 +45,37 @@
       ]
     },
     {
-      "name": "Minto Recreation Complex - Barrhaven",
+      "name": "Minto Recreation Complex - Barrhaven (Volleyball)",
       "home": "https://ottawa.ca/en/recreation-and-parks/recreation-facilities/facility-listing/minto-recreation-complex-barrhaven",
       "link": "https://reservation.frontdesksuite.ca/rcfs/mintobarrhaven/",
       "activity_button": "Volleyball - Adult",
       "schedule": [
         {
-          "day_of_week": 1,
-          "starting_time": "8:00 PM",
+          "day_of_week": 4,
+          "starting_time": "8:30 PM",
+          "follow": true
+        },
+        {
+          "day_of_week": 7,
+          "starting_time": "5:45 PM",
+          "follow": true
+        }
+      ]
+    },
+    {
+      "name": "Minto Recreation Complex - Barrhaven (Soccer)",
+      "home": "https://ottawa.ca/en/recreation-and-parks/recreation-facilities/facility-listing/minto-recreation-complex-barrhaven",
+      "link": "https://reservation.frontdesksuite.ca/rcfs/mintobarrhaven/",
+      "activity_button": "Soccer - turf - adult",
+      "schedule": [
+        {
+          "day_of_week": 4,
+          "starting_time": "5:00 PM",
           "follow": true
         },
         {
           "day_of_week": 5,
-          "starting_time": "7:00 PM",
-          "follow": true
-        },
-        {
-          "day_of_week": 5,
-          "starting_time": "8:00 PM",
+          "starting_time": "7:30 PM",
           "follow": true
         }
       ]
