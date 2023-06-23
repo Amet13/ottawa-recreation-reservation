@@ -40,7 +40,7 @@
         {
           "day_of_week": 6,
           "starting_time": "12:30 PM",
-          "follow": true
+          "follow": false
         }
       ]
     },
