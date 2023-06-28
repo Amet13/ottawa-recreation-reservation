@@ -128,7 +128,7 @@ class SlotReservation:
             rec_slot["starting_time"] + " " +
             weekday_name + "']"
         ).click()
-        time.sleep(random.uniform(0, 1))
+        time.sleep(random.uniform(0.1, 0.9))
 
         self._fill_reservation_form(driver)
 
@@ -162,6 +162,17 @@ class SlotReservation:
         code_input.send_keys(confirmation_code)
         driver.find_element(By.CLASS_NAME, "mdc-button__ripple").click()
 
+        try:
+            driver.find_element(
+                By.XPATH,
+                "//*[text()='Time and number of participants']"
+            )
+            driver.find_elements(
+                By.CLASS_NAME, "mdc-button__ripple"
+            )[-1].click()
+        except NoSuchElementException:
+            logging.info("Skipping final confirmation page...")
+
         message: str = (
             f'✅ Successfully reserved a slot in {rec_name} '
             f'at {rec_slot["starting_time"]} '
@@ -182,20 +193,23 @@ class SlotReservation:
         """
         telephone_input = driver.find_element(By.ID, "telephone")
         telephone_input.clear()
-        telephone_input.send_keys(self.env_var.phone_number)
-        time.sleep(random.uniform(0, 1))
+        for symbol in self.env_var.phone_number:
+            telephone_input.send_keys(symbol)
+            time.sleep(random.uniform(0.01, 0.1))
 
         email_input = driver.find_element(By.ID, "email")
         email_input.clear()
-        email_input.send_keys(self.env_var.imap_email)
-        time.sleep(random.uniform(0, 1))
+        for symbol in self.env_var.imap_email:
+            email_input.send_keys(symbol)
+            time.sleep(random.uniform(0.01, 0.1))
 
         name_input = driver.find_element(
             By.XPATH, "//input[starts-with(@id, 'field')]"
         )
         name_input.clear()
-        name_input.send_keys(self.env_var.name)
-        time.sleep(random.uniform(1, 3))
+        for symbol in self.env_var.name:
+            name_input.send_keys(symbol)
+            time.sleep(random.uniform(0.01, 0.1))
 
         driver.find_element(By.CLASS_NAME, "mdc-button__ripple").click()
 
@@ -219,7 +233,7 @@ class SlotReservation:
                     driver.find_element(
                         By.CLASS_NAME, "mdc-button__ripple"
                     ).click()
-                    time.sleep(random.uniform(2, 4))
+                    time.sleep(random.uniform(1, 3))
                 else:
                     break
             except NoSuchElementException:
